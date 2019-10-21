@@ -1,0 +1,120 @@
+article.post {
+    position: relative;
+}
+
+.entry-content {
+    position: fixed;
+    opacity: 0;
+    height: 100%;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    transition: all .5s cubic-bezier(0.86, 0, 0.07, 1);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.toggle-snippet-checkbox:checked ~ .entry-content {
+    height: 100%;
+    width: 100vw;
+    z-index: 1000;
+    position: fixed;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    opacity: 1;
+}
+
+
+main#main {
+    /* position: relative; */
+}
+
+.site {
+    background: aliceblue;
+    padding: 5%;
+}
+
+.entry-content:before {
+    transform: scale(0.1);
+    width: 0vw;
+    height: 0vw;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    border-radius: 100%;
+    opacity: 0;
+    transition: all .5s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.toggle-snippet-checkbox:checked ~ .entry-content:before {
+    content: "";
+    background: #CDDC39;
+    width: 100vw;
+    height: 100vw;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    border-radius: 100%;
+    opacity: 1;
+    transform: scale(2.5);
+    transform-origin: 50vw 10vw;
+}
+
+
+.toggle-snippet-checkbox:checked ~ .toggle-snippet {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: #ffffff47;
+    z-index: 220000;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    span.crossline {
+        height: 2px;
+        width: 30px;
+        background: black;
+        display: block;
+        position: relative;
+        top: 23px;
+        left: 9px;
+        transform-origin: 17px;
+        opacity: .3;
+    }
+    
+    span.crossline.one {
+        transform: rotate(-45deg);
+    }
+    span.crossline.two {
+        transform: rotate(45deg);
+    }
+}
+
+.entry-content .t-wrap {
+    opacity: 0;
+    position: absolute;
+    z-index: 2000;
+    padding: 5%;
+    transition: all 0.5s cubic-bezier(0.86, 0, 0.07, 1) .25s;
+}
+
+input.toggle-snippet-checkbox {
+    display: none;
+}
+
+.toggle-snippet-checkbox:checked ~ .entry-content .t-wrap {
+    opacity: 1;
+}
+
+
+.toggle-snippet {
+    position: absolute;
+    z-index: 200;
+    width: 100%;
+    height: 100%;
+    display: block;
+    top: 0;
+    right: 0;
+}
