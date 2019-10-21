@@ -79,6 +79,8 @@ if ( ! function_exists( 'adventninteen_setup' ) ) :
 			'flex-width'  => true,
 			'flex-height' => true,
 		) );
+
+		add_image_size('advent', 350, 350);
 	}
 endif;
 add_action( 'after_setup_theme', 'adventninteen_setup' );

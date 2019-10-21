@@ -6,7 +6,7 @@
  *
  * @package adventninteen
  */
-
+$i = get_query_var('post_count');
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -19,6 +19,10 @@
 
 
 	<header class="entry-header">
+
+		<?php echo $i; ?>
+		<?php adventninteen_post_thumbnail(); ?>
+
 		<?php
 		if ( is_singular() ) :
 			the_title( '<h1 class="entry-title">', '</h1>' );
@@ -37,7 +41,7 @@
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php adventninteen_post_thumbnail(); ?>
+	
 
 	<div class="entry-content">
 		<div class="t-wrap">

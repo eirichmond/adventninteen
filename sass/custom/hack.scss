@@ -1,5 +1,29 @@
+.site-main {
+    --grid-min-width: 16rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--grid-min-width), 1fr));
+    grid-gap: 1rem;
+}
+  
 article.post {
     position: relative;
+    min-height: 16rem;
+    justify-content: center;
+    display: grid;
+    align-items: center;
+    padding: 5%;
+}
+
+.post-thumbnail {
+    margin: 0 auto;
+    display: block;
+    max-width: 80%;
+    padding: 10%;
+}
+
+.entry-title, .entry-meta, .entry-footer {
+    position: absolute;
+    top: -9999px;
 }
 
 .entry-content {
@@ -30,7 +54,6 @@ main#main {
 }
 
 .site {
-    background: aliceblue;
     padding: 5%;
 }
 
@@ -118,3 +141,21 @@ input.toggle-snippet-checkbox {
     top: 0;
     right: 0;
 }
+
+
+article#post-752 {
+    background: $festive__color__5;
+}
+
+article#post-562 {
+    background: $festive__color__3;
+}
+
+article#post-742 {
+    background: $festive__color__1;
+}
+
+article#post-732 {
+    background: $festive__color__4;
+}
+
