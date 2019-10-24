@@ -127,12 +127,19 @@ function adventninteen_scripts() {
 	wp_enqueue_script( 'adventninteen-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'adventninteen-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'font-awesome', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
+	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'adventninteen_scripts' );
+
+function include_font_awesome_wpstx() {
+	echo '<script src="https://kit.fontawesome.com/20f36f4160.js" crossorigin="anonymous"></script>';
+}
+add_action('wp_head', 'include_font_awesome_wpstx');
 
 /**
  * Implement the Custom Header feature.
@@ -153,6 +160,12 @@ require get_template_directory() . '/inc/template-functions.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
+
+/**
+ * Login functions.
+ */
+require get_template_directory() . '/inc/login-function.php';
+
 
 /**
  * Load Jetpack compatibility file.

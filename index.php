@@ -18,7 +18,7 @@ get_header();
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
-		<?php $i = 1; if ( have_posts() ) :
+		<?php if ( have_posts() ) :
 
 			if ( is_home() && ! is_front_page() ) : ?>
 				<header>
@@ -26,10 +26,12 @@ get_header();
 				</header>
 				<?php
 			endif;
-			
-			set_query_var( 'post_count', $i );
+
+			$i = 1;
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
+
+				set_query_var( 'post_count', $i );
 
 				/*
 				 * Include the Post-Type-specific template for the content.
@@ -38,9 +40,13 @@ get_header();
 				 */
 				get_template_part( 'template-parts/content', get_post_type() );	
 
-			++$i; endwhile;
+				++$i;
+
+			endwhile;
 
 			while ( $i < 25) {
+
+				set_query_var( 'post_count', $i );
 
 				get_template_part( 'template-parts/content', 'blank' );
 

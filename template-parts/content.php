@@ -10,7 +10,7 @@ $i = get_query_var('post_count');
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
+	
 	<input type="checkbox" class="toggle-snippet-checkbox" id="<?php echo the_ID(); ?>">
 	<label for="<?php echo the_ID(); ?>" class="toggle-snippet">
 		<span class="crossline one"></span>
@@ -20,7 +20,8 @@ $i = get_query_var('post_count');
 
 	<header class="entry-header">
 
-		<?php echo $i; ?>
+		
+
 		<?php adventninteen_post_thumbnail(); ?>
 
 		<?php
@@ -70,4 +71,7 @@ $i = get_query_var('post_count');
 	<footer class="entry-footer">
 		<?php adventninteen_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
+	
+	<div class="calendar-number"><?php echo esc_html($i); ?></div>
+
 </article><!-- #post-<?php the_ID(); ?> -->

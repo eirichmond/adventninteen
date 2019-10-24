@@ -118,16 +118,22 @@ if ( ! function_exists( 'adventninteen_post_thumbnail' ) ) :
 	 * Wraps the post thumbnail in an anchor element on index views, or a div
 	 * element when on single views.
 	 */
-	function adventninteen_post_thumbnail() {
+	function adventninteen_post_thumbnail($no_link = false) {
 		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 			return;
 		}
 
-		if ( is_singular() ) :
+		if ( is_singular() || $no_link == true ) :
 			?>
 
 			<div class="post-thumbnail">
-				<?php the_post_thumbnail(); ?>
+				<?php
+				the_post_thumbnail( 'post-thumbnail', array(
+					'alt' => the_title_attribute( array(
+						'echo' => false,
+					) ),
+				) );
+				?>
 			</div><!-- .post-thumbnail -->
 
 		<?php else : ?>
