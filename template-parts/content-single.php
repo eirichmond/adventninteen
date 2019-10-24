@@ -11,21 +11,6 @@ $i = get_query_var('post_count');
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<input type="checkbox" class="toggle-snippet-checkbox" id="<?php echo the_ID(); ?>">
-	<label for="<?php echo the_ID(); ?>" class="toggle-snippet">
-		<span class="crossline one"></span>
-		<span class="crossline two"></span>
-	</label>
-
-
-	<header class="entry-header">
-
-		<?php adventninteen_post_thumbnail(); ?>
-
-	</header><!-- .entry-header -->
-
-
-
 	<div class="entry-content">
 		<div class="t-wrap">
 
@@ -68,10 +53,18 @@ $i = get_query_var('post_count');
 		</div>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
-		<?php adventninteen_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-
-	<div class="calendar-number"><?php echo esc_html($i); ?></div>
 
 </article><!-- #post-<?php the_ID(); ?> -->
+
+<div id="authorbox">
+	<div class="authimg">
+		<?php if (function_exists('get_avatar')) { echo get_avatar( get_the_author_meta('email'), '80' ); }?>
+	</div>
+	<div class="authortext">
+		<h4 class="authhead">About <?php the_author_posts_link(); ?>
+		</h4>
+		<p><?php the_author_meta('description'); ?></p>
+	</div>
+</div>
+
+
