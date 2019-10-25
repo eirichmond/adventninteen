@@ -68,3 +68,16 @@ body.login div#login p#backtoblog a {
 .login #login_error, .login .message, .login .success {
     color:#4e0250;
 }
+
+p.select_role {
+    height: 100px;
+}
+
+.login .select_role label {
+    line-height: 2rem;
+}
+
+select#select_role {
+    height: 40px;
+    width: 100%;
+}

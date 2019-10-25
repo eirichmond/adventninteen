@@ -38,6 +38,17 @@ function wpstxmas_add_registration_fields() {
     // $agree_terms = ( isset( $_POST['agree_terms'] ) ) ? $_POST['agree_terms'] : '';
     ?>
 
+    <p class="select_role">
+
+        <label for="select_role">Registration Preference</label>
+        <select name="select_role" id="select_role">
+                <option value="">Select</option>
+                <option value="subscriber">Subscriber - Notify me of snippets</option>
+                <option value="contributor">Contributor - Contribute a snippet</option>
+        </select>
+
+    </p>
+
     <p class="agree_terms">
 
         <label for="agree_terms">
@@ -56,8 +67,10 @@ add_filter( 'registration_errors', 'wpstxmas_registration_errors', 10, 3 );
 function wpstxmas_registration_errors( $errors, $sanitized_user_login, $user_email ) {
     
     if ( empty( $_POST['agree_terms'] ) || ! empty( $_POST['agree_terms'] ) && trim( $_POST['agree_terms'] ) == '' ) {
-    $errors->add( 'agree_terms_error', sprintf('<strong>%s</strong>: %s',__( 'ERROR', 'mydomain' ),__( 'You must include agree to terms.', 'mydomain' ) ) );
-
+        $errors->add( 'agree_terms_error', sprintf('<strong>%s</strong>: %s',__( 'ERROR', 'mydomain' ),__( 'You must include agree to terms.', 'adventninteen' ) ) );
+    }
+    if ( empty( $_POST['select_role'] ) || ! empty( $_POST['select_role'] ) && trim( $_POST['select_role'] ) == '' ) {
+        $errors->add( 'select_role_error', sprintf('<strong>%s</strong>: %s',__( 'ERROR', 'mydomain' ),__( 'Please select your registration role.', 'adventninteen' ) ) );
     }
 
     return $errors;
@@ -71,7 +84,22 @@ function wpstxmas_user_register( $user_id ) {
     if ( ! empty( $_POST['agree_terms'] ) ) {
         update_user_meta( $user_id, 'agree_terms', sanitize_text_field( $_POST['agree_terms'] ) );
     }
+    if ( ! empty( $_POST['select_role'] ) ) {
+        update_user_meta( $user_id, 'select_role', sanitize_text_field( $_POST['select_role'] ) );
+    }
 }
 
+
+add_filter( 'wp_mail_from_name', 'wpstxmas_wp_mail_from_name' );
+function wpstxmas_wp_mail_from_name( $original_email_from ) {
+    return get_bloginfo('name');
+}
+
+add_filter( 'wp_mail_from', 'wpstxmas_wp_mail_from' );
+function wpstxmas_wp_mail_from( $original_email_address ) {
+	//Make sure the email is from the same domain 
+	//as your website to avoid being marked as spam.
+	return get_option('admin_email');
+}
 
 ?>
