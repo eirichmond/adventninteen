@@ -194,6 +194,7 @@ p.site-description{opacity:0;text-transform:uppercase;font-family:serif;letter-s
 .site-branding-right{margin:30px;text-align:center}
 @media screen and (min-width:37.5em){.menu-toggle{display:none}
 .main-navigation ul{display:block}
+}@media only screen and (max-width:600px){.site-title{font-size:6vw}
 }@-webkit-keyframes driftin{from{opacity:0;-webkit-transform:translateY(10px);transform:translateY(10px)}
 to{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}
 }@keyframes driftin{from{opacity:0;-webkit-transform:translateY(10px);transform:translateY(10px)}
